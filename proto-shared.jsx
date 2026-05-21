@@ -204,7 +204,7 @@ const TabBar = ({active,onChange}) => {
       </svg>
     )},
     { id:'notes', label:'Live Notes', icon: <NoteIcon c={active==='notes'?C.navy:C.slate} size={22}/> },
-    { id:'me', label:'Me', icon: (
+    { id:'me', label:'Profile', icon: (
       <svg width={22} height={22} viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="8" r="4" stroke={active==='me'?C.navy:C.slate} strokeWidth="1.8"/>
         <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke={active==='me'?C.navy:C.slate} strokeWidth="1.8" strokeLinecap="round"/>
@@ -221,9 +221,9 @@ const TabBar = ({active,onChange}) => {
     }}>
       {tabs.map(t=>(
         <button key={t.id} onClick={()=>onChange(t.id)} style={{
-          flex:1,border:'none',background:'transparent',cursor:'pointer',
+          flex:1,height:72,border:'none',background:'transparent',cursor:'pointer',
           display:'flex',flexDirection:'column',alignItems:'center',gap:4,
-          padding:0,
+          justifyContent:'flex-start',padding:'0 0 8px',
         }}>
           {t.icon}
           <span style={{
