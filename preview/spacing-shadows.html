@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FFFAFA;font-family:'Inter',system-ui;padding:24px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.card{background:#fff;border-radius:18px;padding:16px 20px;display:flex;flex-direction:column;gap:8px;min-width:160px}
+.name{font-size:10px;font-weight:700;color:#6D8196;text-transform:uppercase;letter-spacing:.06em}
+.desc{font-size:11px;color:#6D8196;font-family:monospace;line-height:16px}
+</style>
+</head><body>
+
+<div class="card" style="box-shadow:0 1px 2px rgba(10,10,42,.04),0 4px 14px rgba(10,10,42,.06)">
+  <div class="name">shadow-sm</div>
+  <div class="desc">Inline cards<br/>history items, chips</div>
+</div>
+
+<div class="card" style="box-shadow:0 2px 8px rgba(10,10,42,.05),0 18px 36px rgba(10,10,42,.10)">
+  <div class="name">shadow-md</div>
+  <div class="desc">Elevated cards<br/>photo card, answer hero</div>
+</div>
+
+<div class="card" style="box-shadow:inset 0 0 0 1px #ECEAE5">
+  <div class="name">shadow-card</div>
+  <div class="desc">Hairline border<br/>inset 1px #ECEAE5</div>
+</div>
+
+<div class="card" style="background:#000080;color:#fff;box-shadow:0 10px 24px rgba(0,0,128,.28)">
+  <div class="name" style="color:#ADD8E6">shadow-cta</div>
+  <div class="desc" style="color:rgba(255,255,255,.6)">Navy CTA buttons<br/>0 10px 24px navy .28</div>
+</div>
+
+<div style="background:#FFFAFA;border-radius:9999px;padding:16px 24px;box-shadow:0 8px 24px rgba(0,0,128,.12),0 24px 60px rgba(0,0,128,.18)">
+  <div class="name">shadow-dock</div>
+  <div class="desc" style="margin-top:4px">Floating pill dock<br/>double-layer navy</div>
+</div>
+
+</body></html>

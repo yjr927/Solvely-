@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#FFFAFA;font-family:'Inter',system-ui;padding:20px 24px;display:flex;gap:32px;flex-wrap:wrap}
+.section{display:flex;flex-direction:column;gap:10px}
+.label{font-size:10px;font-weight:700;color:#6D8196;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.row{display:flex;align-items:center;gap:10px}
+.spacer{background:#ADD8E6;border-radius:3px;height:16px;flex-shrink:0}
+.meta{font-size:11px;color:#6D8196;font-family:monospace}
+.radius-box{background:#E5F1F7;display:flex;align-items:center;justify-content:center;width:52px;height:52px;flex-shrink:0}
+.radius-label{font-size:10px;font-weight:600;color:#000080;margin-top:4px;text-align:center}
+</style>
+</head><body>
+
+<div class="section">
+  <div class="label">Spacing scale (8pt grid)</div>
+  <div class="row"><div class="spacer" style="width:4px"></div><div class="meta">--space-1 · 4px</div></div>
+  <div class="row"><div class="spacer" style="width:8px"></div><div class="meta">--space-2 · 8px</div></div>
+  <div class="row"><div class="spacer" style="width:12px"></div><div class="meta">--space-3 · 12px</div></div>
+  <div class="row"><div class="spacer" style="width:16px"></div><div class="meta">--space-4 · 16px</div></div>
+  <div class="row"><div class="spacer" style="width:20px"></div><div class="meta">--space-5 · 20px</div></div>
+  <div class="row"><div class="spacer" style="width:24px"></div><div class="meta">--space-6 · 24px</div></div>
+  <div class="row"><div class="spacer" style="width:32px"></div><div class="meta">--space-8 · 32px</div></div>
+  <div class="row"><div class="spacer" style="width:40px"></div><div class="meta">--space-10 · 40px</div></div>
+  <div class="row"><div class="spacer" style="width:48px"></div><div class="meta">--space-12 · 48px</div></div>
+</div>
+
+<div class="section">
+  <div class="label">Corner radii</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <div style="text-align:center"><div class="radius-box" style="border-radius:8px"></div><div class="radius-label">r-xs · 8</div></div>
+    <div style="text-align:center"><div class="radius-box" style="border-radius:12px"></div><div class="radius-label">r-sm · 12</div></div>
+    <div style="text-align:center"><div class="radius-box" style="border-radius:18px"></div><div class="radius-label">r-md · 18</div></div>
+    <div style="text-align:center"><div class="radius-box" style="border-radius:22px"></div><div class="radius-label">r-lg · 22</div></div>
+    <div style="text-align:center"><div class="radius-box" style="border-radius:28px"></div><div class="radius-label">r-xl · 28</div></div>
+    <div style="text-align:center"><div class="radius-box" style="border-radius:9999px"></div><div class="radius-label">pill</div></div>
+  </div>
+</div>
+
+</body></html>

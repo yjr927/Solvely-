@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8EAF0;font-family:'Inter',system-ui;padding:20px 24px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.meta{font-size:10px;color:#6D8196;margin-top:8px;font-family:monospace;text-align:center}
+.col{display:flex;flex-direction:column;align-items:center}
+svg{display:block}
+</style>
+</head><body>
+
+<!-- Floating dock 3-item -->
+<div class="col">
+  <div style="width:240px;height:80px;border-radius:9999px;background:#fff;box-shadow:0 8px 24px rgba(0,0,128,.12),0 24px 60px rgba(0,0,128,.18);position:relative;display:flex;align-items:center">
+    <!-- Type btn -->
+    <div style="position:absolute;left:8px;width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="#6D8196" stroke-width="1.8"/><path d="M7 9h10M7 13h6" stroke="#6D8196" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span style="font-size:9px;color:#6D8196;font-weight:500">Type</span>
+    </div>
+    <!-- Camera CTA -->
+    <div style="position:absolute;left:88px;width:64px;height:64px;border-radius:9999px;background:#000080;box-shadow:0 10px 24px rgba(0,0,128,.28);display:flex;align-items:center;justify-content:center">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M5 8.5h3.5l1.5-2.2h8l1.5 2.2H23a2 2 0 012 2v10.3a2 2 0 01-2 2H5a2 2 0 01-2-2V10.5a2 2 0 012-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><circle cx="14" cy="14.5" r="4" stroke="#fff" stroke-width="1.8"/></svg>
+      <div style="position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:8px;background:#ADD8E6;display:flex;align-items:center;justify-content:center">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="#000080"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z"/></svg>
+      </div>
+    </div>
+    <!-- Upload btn -->
+    <div style="position:absolute;left:168px;width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#6D8196" stroke-width="1.8"/><path d="M7 15l3-3 2 2 3-4 3 4" stroke="#6D8196" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9" cy="9.5" r="1.3" fill="#6D8196"/></svg>
+      <span style="font-size:9px;color:#6D8196;font-weight:500">Upload</span>
+    </div>
+  </div>
+  <div class="meta">Floating dock · 240×80 · pill · shadow-dock</div>
+</div>
+
+<!-- Tab bar -->
+<div class="col">
+  <div style="width:390px;height:82px;background:#fff;border-top:1px solid #ECEAE5;display:flex;align-items:flex-start;justify-content:space-around;padding-top:10px">
+    <!-- Scan active -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path d="M5 8.5h3.5l1.5-2.2h8l1.5 2.2H23a2 2 0 012 2v10.3a2 2 0 01-2 2H5a2 2 0 01-2-2V10.5a2 2 0 012-2z" stroke="#000080" stroke-width="1.8" stroke-linejoin="round"/><circle cx="14" cy="14.5" r="4" stroke="#000080" stroke-width="1.8"/></svg>
+      <span style="font-size:10px;font-weight:700;color:#000080">Scan</span>
+    </div>
+    <!-- History -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#6D8196" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#6D8196" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span style="font-size:10px;font-weight:500;color:#6D8196">History</span>
+    </div>
+    <!-- Live Notes -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 4h12v17l-6-4-6 4V4z" stroke="#6D8196" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span style="font-size:10px;font-weight:500;color:#6D8196">Live Notes</span>
+    </div>
+    <!-- Me -->
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#6D8196" stroke-width="1.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#6D8196" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <span style="font-size:10px;font-weight:500;color:#6D8196">Me</span>
+    </div>
+  </div>
+  <div class="meta">Tab bar · 390×82 · white · hairline top</div>
+</div>
+
+</body></html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Solvely · Mobile redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #f0eee9;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    color: #2a251f;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="solvely-brand.jsx"></script>
+<script type="text/babel" src="solvely-screens.jsx"></script>
+
+<script type="text/babel" data-presets="env,react">
+  const { useState, useEffect } = React;
+
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "showLiveFlow": false,
+    "showShadows": true
+  }/*EDITMODE-END*/;
+
+  // Wrap each screen in an iOS frame, scaled down to fit nicely in the canvas
+  function Phone({ initial, screen, freeLeft = 3 }) {
+    return (
+      <div style={{ position: 'relative' }}>
+        <IOSDevice width={390} height={844} dark={false}>
+          <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+            <SolvelyApp initial={initial} freeLeft={freeLeft}/>
+          </div>
+        </IOSDevice>
+      </div>
+    );
+  }
+
+  function App() {
+    const t = useTweaks(TWEAKS);
+
+    return (
+      <>
+        <DesignCanvas>
+          <DCSection
+            id="solvely-flow"
+            title="Solvely — AI homework companion"
+            subtitle="4-screen redesign · iPhone 15 (390×844) · click any phone to step through the flow"
+          >
+            <DCArtboard id="scan" label="01 · Scan" width={430} height={884}>
+              <Centered><Phone initial="scan" freeLeft={3}/></Centered>
+            </DCArtboard>
+            <DCArtboard id="confirm" label="02 · Confirm" width={430} height={884}>
+              <Centered><Phone initial="confirm" freeLeft={3}/></Centered>
+            </DCArtboard>
+            <DCArtboard id="analyzing" label="03 · Analyzing" width={430} height={884}>
+              <Centered><Phone initial="analyzing" freeLeft={2}/></Centered>
+            </DCArtboard>
+            <DCArtboard id="result" label="04 · Result" width={430} height={884}>
+              <Centered><Phone initial="result" freeLeft={2}/></Centered>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection
+            id="brand"
+            title="Brand system"
+            subtitle="Colors, type, and core surfaces"
+          >
+            <DCArtboard id="palette" label="Palette + type" width={560} height={420}>
+              <BrandSheet/>
+            </DCArtboard>
+            <DCArtboard id="components" label="Core components" width={460} height={420}>
+              <ComponentSheet/>
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="Try the flow">
+            <div style={{ fontSize: 12, color: '#666', lineHeight: '17px' }}>
+              Each phone is an interactive prototype — tap the capture button on screen 01 to walk through Scan → Confirm → Analyzing → Result.
+              Open any phone fullscreen using the ⤢ button in the corner of its artboard.
+            </div>
+          </TweakSection>
+        </TweaksPanel>
+      </>
+    );
+  }
+
+  function Centered({ children }) {
+    return (
+      <div style={{
+        width: '100%', height: '100%',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: 'radial-gradient(120% 80% at 50% 0%, #E5F1F7 0%, #FFFAFA 60%)',
+      }}>
+        {children}
+      </div>
+    );
+  }
+
+  function BrandSheet() {
+    const swatches = [
+      ['Slate', '#6D8196', '#fff'],
+      ['Sky', '#ADD8E6', '#0A0A2A'],
+      ['Snow', '#FFFAFA', '#0A0A2A'],
+      ['Navy', '#000080', '#FFFAFA'],
+      ['Ink', '#0A0A2A', '#FFFAFA'],
+      ['Sky soft', '#E5F1F7', '#0A0A2A'],
+    ];
+    return (
+      <div style={{ padding: 28, width: '100%', height: '100%', background: '#FFFAFA', display: 'flex', flexDirection: 'column', gap: 20, fontFamily: 'Inter, system-ui' }}>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <SolvelyMark size={36}/>
+            <div>
+              <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-.02em', color: '#0A0A2A' }}>solvely</div>
+              <div style={{ fontSize: 12, color: '#6D8196' }}>Snap. Solve. Understand.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Palette</div>
+          <div style={{ marginTop: 8, display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 8 }}>
+            {swatches.map(([n, hex, tx]) => (
+              <div key={n} style={{ background: hex, color: tx, padding: 10, borderRadius: 12, height: 86, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxShadow: 'inset 0 0 0 1px rgba(10,10,42,.06)' }}>
+                <div style={{ fontSize: 11, fontWeight: 600 }}>{n}</div>
+                <div style={{ fontSize: 10, fontFamily: 'Geist Mono, monospace', opacity: .85 }}>{hex}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 10, height: 36, borderRadius: 10, background: '#000080', display: 'flex', alignItems: 'center', padding: '0 14px', color: '#FFFAFA', fontSize: 12, fontWeight: 600, letterSpacing: '.04em' }}>
+            ⬤ NAVY · the only "loud" color · used for primary CTAs and Final-answer surface
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', gap: 24 }}>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Display</div>
+            <div style={{ fontSize: 28, fontWeight: 700, letterSpacing: '-.025em', color: '#0A0A2A' }}>Solve, don't just answer.</div>
+            <div style={{ marginTop: 2, fontSize: 11, color: '#6D8196' }}>Inter 700 · -2.5% tracking</div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Mono (math)</div>
+            <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 22, fontWeight: 600, color: '#000080' }}>2x² − 7x + 3 = 0</div>
+            <div style={{ marginTop: 2, fontSize: 11, color: '#6D8196' }}>Geist Mono 600 · navy ink</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function ComponentSheet() {
+    return (
+      <div style={{ padding: 24, width: '100%', height: '100%', background: '#FFFAFA', display: 'flex', flexDirection: 'column', gap: 16, fontFamily: 'Inter, system-ui' }}>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Buttons</div>
+          <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <button style={{
+              height: 52, borderRadius: 18, border: 'none',
+              background: '#000080', color: '#FFFAFA',
+              fontFamily: 'Inter', fontSize: 15, fontWeight: 700, letterSpacing: '-.01em',
+              boxShadow: '0 10px 24px rgba(0,0,128,.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+            }}>Primary action →</button>
+            <button style={{
+              height: 52, borderRadius: 18, border: 'none', background: '#fff',
+              color: '#0A0A2A', fontFamily: 'Inter', fontSize: 15, fontWeight: 600,
+              boxShadow: 'inset 0 0 0 1px #ECEAE5',
+            }}>Secondary</button>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <div style={{ padding: '7px 12px', borderRadius: 999, background: '#000080', color: '#ADD8E6', fontSize: 12, fontWeight: 700 }}>Algebra</div>
+              <div style={{ padding: '7px 12px', borderRadius: 999, background: '#fff', color: '#0A0A2A', fontSize: 12, fontWeight: 600, boxShadow: 'inset 0 0 0 1px #ECEAE5' }}>Geometry</div>
+              <div style={{ padding: '7px 12px', borderRadius: 999, background: '#E5F1F7', color: '#000080', fontSize: 12, fontWeight: 600 }}>Tag</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Surfaces</div>
+          <div style={{ marginTop: 8, display: 'flex', gap: 8 }}>
+            <div style={{ flex: 1, padding: 12, borderRadius: 16, background: '#fff', boxShadow: 'inset 0 0 0 1px #ECEAE5', fontSize: 12 }}>
+              <div style={{ fontWeight: 600 }}>White card</div>
+              <div style={{ fontSize: 10, color: '#6D8196', marginTop: 2 }}>hairline · 18–24r</div>
+            </div>
+            <div style={{ flex: 1, padding: 12, borderRadius: 16, background: '#E5F1F7', fontSize: 12 }}>
+              <div style={{ fontWeight: 600, color: '#000080' }}>Sky tint</div>
+              <div style={{ fontSize: 10, color: '#6D8196', marginTop: 2 }}>chips · highlights</div>
+            </div>
+            <div style={{ flex: 1, padding: 12, borderRadius: 16, background: '#000080', color: '#FFFAFA', fontSize: 12 }}>
+              <div style={{ fontWeight: 600 }}>Navy hero</div>
+              <div style={{ fontSize: 10, color: '#ADD8E6', marginTop: 2 }}>final answers</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '.08em', color: '#6D8196', textTransform: 'uppercase' }}>Radii · 4 / 8 / 14 / 20 / 28</div>
+          <div style={{ marginTop: 8, display: 'flex', gap: 8, alignItems: 'flex-end' }}>
+            {[4, 8, 14, 20, 28].map(r => (
+              <div key={r} style={{ width: 44, height: 44, background: '#ADD8E6', borderRadius: r }}/>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<App/>);
+</script>
+</body>
+</html>
