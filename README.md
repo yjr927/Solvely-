@@ -1,10 +1,7 @@
 # Solvely Design System
 
-## What is Solvely?
-Solvely is an AI-powered homework companion mobile app. Students snap a photo of a math or science question and Solvely explains it step-by-step. It targets high-school and college students preparing for exams (AMC, SAT, AP, etc.).
-
-**Platform:** iOS mobile app (iPhone 15, 390×844 logical px)
-**Sources:** Figma file `solvely 笔试.fig` (9 frames, Page-1), interactive prototype built in this project
+##Solvely笔试?
+solvely笔试demo，包括拍照解题流程
 
 ---
 
@@ -15,7 +12,6 @@ Solvely is an AI-powered homework companion mobile app. Students snap a photo of
 - **Short, active sentences.** "Snap. Solve. Understand."
 - **First-person singular avoided** — speaks directly to the user ("you", "your question").
 - **No jargon.** Math terms are exact (e.g. "quadratic") but UI copy is plain English.
-- **Emoji: sparingly** — flame 🔥 for streaks, gift 🎁 for rewards. No random decoration.
 - **Casing:** Sentence case for UI labels, ALLCAPS for small status chips (`QUADRATIC`, `DETECTED`).
 - **Numbers in copy:** spelled out below ten ("3 free scans"), numerals for math.
 
